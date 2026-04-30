@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F6EFE2" />
+  <title>Bill of Fare — A Weekly Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=DM+Mono:wght@300;400;500&family=Caveat:wght@400..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- paper grain overlay -->
+  <svg class="grain" aria-hidden="true">
+    <filter id="paperGrain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.92" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.045 0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#paperGrain)"/>
+  </svg>
+
+  <main class="page">
+
+    <!-- ==================== MASTHEAD ==================== -->
+    <header class="mast">
+      <div class="rules">
+        <span class="rule rule--thick"></span>
+        <span class="rule rule--thin"></span>
+      </div>
+      <p class="mast__kicker">
+        <span>Est.&nbsp;MMXXVI</span>
+        <span class="dot">●</span>
+        <span>A Seven-Day Bill of Fare</span>
+        <span class="dot">●</span>
+        <span>Posted Weekly</span>
+      </p>
+      <h1 class="mast__title">
+        <span class="mast__article">The</span>
+        <em>Bill of Fare</em>
+      </h1>
+      <p class="mast__sub">
+        <span data-week-label>—</span>
+      </p>
+      <div class="rules rules--bottom">
+        <span class="rule rule--thin"></span>
+        <span class="rule rule--thick"></span>
+      </div>
+    </header>
+
+    <!-- ==================== TOOLBAR ==================== -->
+    <section class="toolbar" aria-label="Week controls">
+      <div class="toolbar__group toolbar__group--nav">
+        <button class="btn btn--ghost" data-action="prev-week" aria-label="Previous week">‹</button>
+        <button class="btn btn--ghost" data-action="today">This Week</button>
+        <button class="btn btn--ghost" data-action="next-week" aria-label="Next week">›</button>
+      </div>
+
+      <div class="toolbar__group toolbar__group--toggle">
+        <span class="toolbar__label">Week starts</span>
+        <div class="seg" role="radiogroup" aria-label="Week starts on">
+          <button class="seg__btn is-active" role="radio" aria-checked="true" data-week-start="sunday">Sun</button>
+          <button class="seg__btn" role="radio" aria-checked="false" data-week-start="monday">Mon</button>
+        </div>
+      </div>
+
+      <div class="toolbar__group toolbar__group--actions">
+        <label class="btn btn--ghost" for="import-input">
+          <span class="btn__glyph">↥</span> Import
+          <input id="import-input" type="file" accept="application/json,.json" hidden />
+        </label>
+        <button class="btn btn--save" data-action="save" disabled>
+          <span class="dirty-dot" aria-hidden="true"></span>
+          <span class="btn__glyph">↧</span> Save
+        </button>
+        <button class="btn btn--add" data-action="add-meal">
+          <span class="btn__glyph">+</span> Add Meal
+        </button>
+      </div>
+    </section>
+
+    <!-- "unsaved" status line — visible only when dirty -->
+    <p class="status" data-status hidden>
+      <span class="status__dot" aria-hidden="true"></span>
+      You have unsaved changes — tap <em>Save</em> to download an updated <code>meals.json</code>.
+    </p>
+
+    <!-- ==================== WEEK GRID ==================== -->
+    <section class="week" aria-label="The week's menu" data-week-grid>
+      <!-- Day cards rendered by src/calendar.js. Phase A placeholder: -->
+      <p class="week__placeholder">
+        <em>The week will be set on the table here.</em>
+      </p>
+    </section>
+
+    <!-- ==================== INGREDIENTS PANEL ==================== -->
+    <aside class="ledger" aria-label="Weekly ingredients">
+      <header class="ledger__head">
+        <p class="ledger__kicker">— for the marketing —</p>
+        <h2 class="ledger__title">Weekly <em>Ingredients</em></h2>
+        <p class="ledger__hint">Aggregated from every meal on the visible week.</p>
+      </header>
+      <ul class="ledger__list" data-ingredients>
+        <li class="ledger__empty"><em>No meals on this week yet.</em></li>
+      </ul>
+    </aside>
+
+    <!-- ==================== COLOPHON ==================== -->
+    <footer class="colophon">
+      <div class="rules">
+        <span class="rule rule--thick"></span>
+        <span class="rule rule--thin"></span>
+      </div>
+      <p class="colophon__line">
+        Set in <em>Fraunces</em> &amp; <em>Newsreader</em>, with timestamps in <em>DM Mono</em> and chef's notes in <em>Caveat</em>.
+      </p>
+      <p class="colophon__line colophon__signoff">⎯&nbsp;&nbsp;fin&nbsp;&nbsp;⎯</p>
+    </footer>
+
+  </main>
+
+  <!-- bottom-sheet modal mount (filled by src/modal.js in Phase D) -->
+  <div class="modal" data-modal hidden aria-hidden="true"></div>
+
+  <!-- scripts — defer keeps execution after parse, in order -->
+  <script defer src="src/dates.js"></script>
+  <script defer src="src/state.js"></script>
+  <script defer src="src/persist.js"></script>
+  <script defer src="src/meal-card.js"></script>
+  <script defer src="src/modal.js"></script>
+  <script defer src="src/calendar.js"></script>
+  <script defer src="src/drag.js"></script>
+  <script defer src="src/ingredients.js"></script>
+  <script defer src="src/main.js"></script>
+</body>
+</html>
