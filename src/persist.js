@@ -35,6 +35,15 @@
         }
         try {
           STORE.replaceAllMeals(parsed);
+          // Jump to the week of the earliest upcoming meal so the import is
+          // visible on screen. Falls back to the most recent meal if all are
+          // in the past.
+          const today = DATES.todayISO();
+          const sorted = [...__STATE__.meals].sort((a, b) => a.day.localeCompare(b.day));
+          const target = sorted.find(m => m.day >= today) || sorted[sorted.length - 1];
+          if (target) {
+            STORE.setWeekStart(DATES.weekStartFor(target.day, __STATE__.weekStartsOn));
+          }
           resolve(parsed.length);
         } catch (e) {
           reject(new Error(`Import failed: ${e.message}`));

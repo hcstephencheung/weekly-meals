@@ -1,65 +1,93 @@
 [
   {
     "id": "SEED-MON-LUNCH",
-    "name": "Lentil & Roasted Carrot Soup",
-    "ingredients": ["red lentils", "carrots", "yellow onion", "cumin", "lemon", "olive oil", "salt"],
-    "day": "2026-04-27",
+    "name": "Salad Mix + Shrimp + Pasta",
+    "ingredients": ["salad mix", "shrimp", "pasta"],
+    "day": "2026-05-04",
     "mealType": "lunch"
   },
   {
     "id": "SEED-MON-DINNER",
-    "name": "Sheet-Pan Chicken with Lemon & Olives",
-    "ingredients": ["chicken thighs", "lemon", "castelvetrano olives", "garlic", "thyme", "olive oil"],
-    "day": "2026-04-27",
+    "name": "Chicken Curry",
+    "ingredients": [],
+    "day": "2026-05-04",
     "mealType": "dinner"
   },
   {
-    "id": "SEED-TUE-BREAKFAST",
-    "name": "Yogurt with Toasted Oats & Honey",
-    "ingredients": ["greek yogurt", "rolled oats", "honey", "almonds"],
-    "day": "2026-04-28",
-    "mealType": "breakfast"
+    "id": "SEED-TUE-LUNCH",
+    "name": "Dumplings",
+    "ingredients": [],
+    "day": "2026-05-05",
+    "mealType": "lunch"
   },
   {
     "id": "SEED-TUE-DINNER",
-    "name": "Mushroom Risotto",
-    "ingredients": ["carnaroli rice", "cremini mushrooms", "yellow onion", "garlic", "white wine", "parmigiano", "butter", "olive oil"],
-    "day": "2026-04-28",
+    "name": "Homemade Poke Bowl",
+    "ingredients": [],
+    "day": "2026-05-05",
     "mealType": "dinner"
   },
   {
     "id": "SEED-WED-LUNCH",
-    "name": "Avocado Toast with Chilli",
-    "ingredients": ["sourdough", "avocado", "chilli flakes", "lemon", "olive oil", "flaky salt"],
-    "day": "2026-04-29",
+    "name": "Salad Mix + Chicken + Rice",
+    "ingredients": ["salad mix", "chicken", "rice"],
+    "day": "2026-05-06",
+    "mealType": "lunch"
+  },
+  {
+    "id": "SEED-WED-DINNER",
+    "name": "Chicken Curry",
+    "ingredients": [],
+    "day": "2026-05-06",
+    "mealType": "dinner"
+  },
+  {
+    "id": "SEED-THU-LUNCH",
+    "name": "Eat Out",
+    "ingredients": [],
+    "day": "2026-05-07",
     "mealType": "lunch"
   },
   {
     "id": "SEED-THU-DINNER",
-    "name": "Linguine alle Vongole",
-    "ingredients": ["linguine", "clams", "garlic", "white wine", "parsley", "olive oil", "chilli flakes"],
-    "day": "2026-04-30",
+    "name": "Noodle Soup + Fishballs + Veggie",
+    "ingredients": ["noodle soup", "fishballs", "veggie"],
+    "day": "2026-05-07",
     "mealType": "dinner"
+  },
+  {
+    "id": "SEED-FRI-LUNCH",
+    "name": "Chicken Strips + Soup",
+    "ingredients": ["chicken strips", "soup"],
+    "day": "2026-05-08",
+    "mealType": "lunch"
   },
   {
     "id": "SEED-FRI-DINNER",
-    "name": "Roast Leg of Lamb with Mint",
-    "ingredients": ["leg of lamb", "garlic", "rosemary", "mint", "anchovies", "olive oil", "salt"],
-    "day": "2026-05-01",
+    "name": "Fried Rice + Duck",
+    "ingredients": ["fried rice", "duck"],
+    "day": "2026-05-08",
     "mealType": "dinner"
   },
   {
-    "id": "SEED-SAT-BREAKFAST",
-    "name": "Buckwheat Crêpes & Smoked Salmon",
-    "ingredients": ["buckwheat flour", "eggs", "milk", "smoked salmon", "creme fraiche", "dill", "lemon"],
-    "day": "2026-05-02",
-    "mealType": "breakfast"
+    "id": "SEED-SAT-LUNCH",
+    "name": "Eat Out",
+    "ingredients": [],
+    "day": "2026-05-09",
+    "mealType": "lunch"
   },
   {
-    "id": "SEED-SUN-DINNER",
-    "name": "Roast Chicken & Bread Salad",
-    "ingredients": ["whole chicken", "sourdough", "currants", "pine nuts", "frisée", "red wine vinegar", "olive oil"],
-    "day": "2026-05-03",
+    "id": "SEED-SAT-DINNER",
+    "name": "Lo Mein / Chow Mein",
+    "ingredients": [],
+    "day": "2026-05-09",
     "mealType": "dinner"
+  },
+  {
+    "id": "SEED-SUN-LUNCH",
+    "name": "Eat Out",
+    "ingredients": [],
+    "day": "2026-05-10",
+    "mealType": "lunch"
   }
 ]

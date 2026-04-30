@@ -3,8 +3,8 @@
 (() => {
   const TYPE_LABEL = {
     breakfast: 'Breakfast',
-    lunch:     'Luncheon',
-    dinner:    'Supper',
+    lunch:     'Lunch',
+    dinner:    'Dinner',
   };
 
   function renderChip(meal) {
