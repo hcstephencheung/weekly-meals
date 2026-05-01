@@ -249,6 +249,62 @@ button { font: inherit; color: inherit; cursor: pointer; }
   box-shadow: 0 1px 0 rgba(31, 42, 56, 0.06);
 }
 
+/* ============== empty-state hero ============== */
+.hero {
+  text-align: center;
+  padding: clamp(28px, 7vw, 64px) clamp(20px, 5vw, 48px);
+  background:
+    radial-gradient(ellipse at top, rgba(169, 195, 216, 0.18), transparent 65%),
+    var(--paper-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px dotted var(--rule);
+  border-radius: 12px;
+  pointer-events: none;
+}
+.hero__kicker {
+  margin: 0 0 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue-ink);
+}
+.hero__title {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(34px, 8vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--blue-ink);
+}
+.hero__lede {
+  margin: 0 auto 22px;
+  max-width: 36ch;
+  font-family: var(--body);
+  font-style: italic;
+  font-size: clamp(15px, 3.6vw, 17px);
+  color: var(--ink-soft);
+}
+.hero__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
 /* ============== status banner ============== */
 .status {
   margin: 0;
@@ -593,11 +649,20 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .modal.is-open .modal__sheet { transform: translateY(0); }
 
 .modal__handle {
+  position: relative;
   display: block;
   width: 44px; height: 4px;
   border-radius: 999px;
   background: var(--rule);
   margin: 0 auto 10px;
+  cursor: grab;
+  touch-action: none;
+}
+.modal__handle::before {
+  /* invisible 32px-tall tap target around the visible handle */
+  content: '';
+  position: absolute;
+  inset: -16px -40px;
 }
 .modal__close {
   position: absolute;

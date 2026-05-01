@@ -2,16 +2,10 @@
 
 (() => {
   document.addEventListener('DOMContentLoaded', () => {
-    bootState();
     wireToolbar();
     STORE.subscribe(render);
     render(__STATE__);
   });
-
-  // -------------------------------------------------------------------------
-  function bootState() {
-    __STATE__.weekStart = DATES.weekStartFor(DATES.todayISO(), __STATE__.weekStartsOn);
-  }
 
   // -------------------------------------------------------------------------
   function wireToolbar() {
@@ -43,11 +37,16 @@
     });
 
     document.querySelector('[data-action="add-meal"]')?.addEventListener('click', () => {
-      // Phase D will replace this with modal.openAdd()
-      if (window.MODAL?.openAdd) MODAL.openAdd();
-      else flash('Add Meal — coming in the next phase.');
+      MODAL.openAdd();
+    });
+
+    document.querySelector('[data-action="start-fresh"]')?.addEventListener('click', () => {
+      heroDismissed = true;
+      render(__STATE__);
     });
   }
+
+  let heroDismissed = false;
 
   // -------------------------------------------------------------------------
   function render(state) {
@@ -73,14 +72,10 @@
     const status = document.querySelector('[data-status]');
     if (status) status.hidden = !state.dirty;
 
-    // Empty-state hint when no meals are loaded — sits inside the grid until
-    // calendar.js paints over it. Calendar.js handles the populated case.
-    const grid = document.querySelector('[data-week-grid]');
-    if (grid && state.meals.length === 0 && !grid.dataset.populated) {
-      grid.dataset.empty = '1';
-    } else if (grid) {
-      delete grid.dataset.empty;
-    }
+    // Empty-state hero — shown when nothing is loaded and the user hasn't
+    // dismissed it. Once dismissed (or once a meal exists) it stays hidden.
+    const hero = document.querySelector('[data-hero]');
+    if (hero) hero.hidden = heroDismissed || state.meals.length > 0;
   }
 
   // -------------------------------------------------------------------------

@@ -86,13 +86,23 @@
       You have unsaved changes — tap <em>Save</em> to download an updated <code>meals.json</code>.
     </p>
 
-    <!-- ==================== WEEK GRID ==================== -->
-    <section class="week" aria-label="The week's menu" data-week-grid>
-      <!-- Day cards rendered by src/calendar.js. Phase A placeholder: -->
-      <p class="week__placeholder">
-        <em>The week will be set on the table here.</em>
+    <!-- empty-state hero — shown when no meals are loaded -->
+    <section class="hero" data-hero hidden>
+      <p class="hero__kicker">— a fresh sheet —</p>
+      <h2 class="hero__title">Set the <em>table</em> for the week.</h2>
+      <p class="hero__lede">
+        Bring in last week's bill of fare, or simply begin adding meals to the calendar below.
       </p>
+      <div class="hero__actions">
+        <label class="btn btn--add" for="import-input">
+          <span class="btn__glyph">↥</span> Import meals.json
+        </label>
+        <button class="btn btn--ghost" data-action="start-fresh">Start fresh</button>
+      </div>
     </section>
+
+    <!-- ==================== WEEK GRID ==================== -->
+    <section class="week" aria-label="The week's menu" data-week-grid></section>
 
     <!-- ==================== INGREDIENTS PANEL ==================== -->
     <aside class="ledger" aria-label="Weekly ingredients">

@@ -42,7 +42,49 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mountEl.classList.contains('is-open')) close();
     });
+
+    wireSwipeToDismiss(sheetEl, handle);
     return mountEl;
+  }
+
+  // Pointer-events drag-down on the handle area to dismiss the sheet on touch.
+  // Only kicks in below 720px (where the sheet is bottom-anchored).
+  function wireSwipeToDismiss(sheet, handle) {
+    let startY = null, lastY = null, startTime = 0;
+
+    function onDown(e) {
+      if (window.matchMedia('(min-width: 720px)').matches) return;
+      // Don't hijack drags that begin inside the form fields.
+      if (e.target.closest('input, textarea, button[type="submit"], select')) return;
+      startY = e.clientY;
+      lastY = e.clientY;
+      startTime = performance.now();
+      sheet.style.transition = 'none';
+      handle.setPointerCapture?.(e.pointerId);
+    }
+    function onMove(e) {
+      if (startY == null) return;
+      const dy = Math.max(0, e.clientY - startY);
+      lastY = e.clientY;
+      sheet.style.transform = `translateY(${dy}px)`;
+    }
+    function onUp(e) {
+      if (startY == null) return;
+      const dy = Math.max(0, (lastY ?? e.clientY) - startY);
+      const dt = performance.now() - startTime;
+      const velocity = dy / Math.max(dt, 1);  // px / ms
+      sheet.style.transition = '';
+      sheet.style.transform = '';
+      const dismiss = dy > 120 || velocity > 0.6;
+      startY = lastY = null;
+      if (dismiss) close();
+    }
+
+    handle.style.touchAction = 'none';
+    handle.addEventListener('pointerdown', onDown);
+    handle.addEventListener('pointermove', onMove);
+    handle.addEventListener('pointerup', onUp);
+    handle.addEventListener('pointercancel', onUp);
   }
 
   function show(contentEl, opts = {}) {
