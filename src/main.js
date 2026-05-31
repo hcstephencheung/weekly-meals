@@ -40,6 +40,10 @@
       MODAL.openAdd();
     });
 
+    document.querySelector('[data-action="paste-plan"]')?.addEventListener('click', () => {
+      PLAN_IMPORT.open();
+    });
+
     document.querySelector('[data-action="start-fresh"]')?.addEventListener('click', () => {
       heroDismissed = true;
       render(__STATE__);

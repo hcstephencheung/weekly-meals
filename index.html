@@ -70,6 +70,9 @@
           <span class="btn__glyph">↥</span> Import
           <input id="import-input" type="file" accept="application/json,.json" hidden />
         </label>
+        <button class="btn btn--ghost" data-action="paste-plan">
+          <span class="btn__glyph">✎</span> Paste plan
+        </button>
         <button class="btn btn--save" data-action="save" disabled>
           <span class="dirty-dot" aria-hidden="true"></span>
           <span class="btn__glyph">↧</span> Save
@@ -139,6 +142,8 @@
   <script defer src="src/persist.js"></script>
   <script defer src="src/meal-card.js"></script>
   <script defer src="src/modal.js"></script>
+  <script defer src="src/parse-plan.js"></script>
+  <script defer src="src/plan-import-modal.js"></script>
   <script defer src="src/calendar.js"></script>
   <script defer src="src/drag.js"></script>
   <script defer src="src/ingredients.js"></script>
